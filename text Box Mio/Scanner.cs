@@ -80,7 +80,7 @@ public class Scanner {
         if ((ch == '_')||(ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')) //es Letra
          ReadName(t);
         else 
-         if ('0' <= ch && '9' >= ch)
+         if ((ch == '_')||('0' <= ch && '9' >= ch))
            ReadNumber(t);
           else
            switch (ch){
@@ -399,7 +399,8 @@ public class Scanner {
     }
     static void ReadNumber(Token t)
     {
-        while (ch>='0' && ch<='9' && ch!=EOF){
+        while (ch >='0' && ch<='9' && ch!=EOF || ch == '_' )
+            {
             t.str = t.str + ch;
             NextCh();
         }
