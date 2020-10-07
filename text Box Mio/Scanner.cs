@@ -77,10 +77,14 @@ public class Scanner {
         Token t = new Token(line, col);
         //if ('A' <= ch && 'z' >= ch) System.Console.WriteLine(ch + " es letra ");
         //if ('0' <= ch && '9' >= ch) System.Console.WriteLine(ch + " es nro ");
-        if ((ch == '_')||(ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')) //es Letra
+        if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')|| ch=='_') //es Letra
          ReadName(t);
         else 
-         if ((ch == '_')||('0' <= ch && '9' >= ch))
+<<<<<<< HEAD
+         if ('0' <= ch && '9' >= ch || ch == '_')
+=======
+         if ('0' <= ch && '9' >= ch)
+>>>>>>> parent of a67699a... modifique en number
            ReadNumber(t);
           else
            switch (ch){
@@ -345,14 +349,14 @@ public class Scanner {
     }
     static void ReadName(Token t)
     {
-        while ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z') || ch == '_')
-        {
-            t.str = t.str+ch;
+        while ('0' <= ch && '9' >= ch || (ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z') || ch == '_')
+        {  
+                t.str = t.str+ch;
             NextCh();
         }
         if (esPalabraClave(t.str))
             switch (t.str)
-            {
+            {   
                 case "break":
                     t.kind = Token.BREAK;
                     break;
@@ -399,8 +403,12 @@ public class Scanner {
     }
     static void ReadNumber(Token t)
     {
-        while (ch >='0' && ch<='9' && ch!=EOF || ch == '_' )
+<<<<<<< HEAD
+        while (ch >='0' && ch<='9' || ch == '_' && ch!=EOF )
             {
+=======
+        while (ch>='0' && ch<='9' && ch!=EOF){
+>>>>>>> parent of a67699a... modifique en number
             t.str = t.str + ch;
             NextCh();
         }
