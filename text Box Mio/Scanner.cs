@@ -80,11 +80,7 @@ public class Scanner {
         if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')|| ch=='_') //es Letra
          ReadName(t);
         else 
-<<<<<<< HEAD
-         if ('0' <= ch && '9' >= ch || ch == '_')
-=======
          if ('0' <= ch && '9' >= ch)
->>>>>>> parent of a67699a... modifique en number
            ReadNumber(t);
           else
            switch (ch){
