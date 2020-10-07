@@ -403,12 +403,8 @@ public class Scanner {
     }
     static void ReadNumber(Token t)
     {
-<<<<<<< HEAD
-        while (ch >='0' && ch<='9' || ch == '_' && ch!=EOF )
+        while (ch>='0' && ch<='9' && ch!=EOF)
             {
-=======
-        while (ch>='0' && ch<='9' && ch!=EOF){
->>>>>>> parent of a67699a... modifique en number
             t.str = t.str + ch;
             NextCh();
         }
