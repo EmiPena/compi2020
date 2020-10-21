@@ -1427,6 +1427,17 @@ namespace at.jku.ssw.cc //Compilador //text_Box_Mio
             pr.Start();
         }
 
+        private void tokensToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 3;
+
+            inicializa();
+            Parser.muestraProducciones = Parser.muestraCargaDeInstrs = false;
+            Tab.muestraTabSimb = true;
+            compilar();
+            // this.Close();
+        }
+
         private void acercaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             acerca_de f = new acerca_de();
