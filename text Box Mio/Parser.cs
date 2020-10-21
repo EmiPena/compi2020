@@ -309,7 +309,7 @@ namespace at.jku.ssw.cc
             //en este caso, debe "mirar hacia adelante" (laToken) 
             //para determinar la opcion de la produccion "PosDeclars = . | Declaration PosDeclars."    
             //Si laToken es "{" => la opcion es "PosDeclars = .", otherwise: "PosDeclars = Declaration PosDeclars."
-            if (!existeDecl)
+            if (!existeDecl) //si entra en while se pone en true
             {
                 posDeclars.Nodes.Add(".");
                 posDeclars.ExpandAll(); //Visualiza (Expande) posDeclars
@@ -325,8 +325,8 @@ namespace at.jku.ssw.cc
                 Console.WriteLine("empieza {"); if (ZZ.readKey) Console.ReadKey();
             }
             Check(Token.LBRACE);
-            Code.Colorear("token");  //ya lo pinto
-            Code.seleccLaProdEnLaGram(0);
+            Code.Colorear("token");  //ya lo pinto, camba Parser.yaPintada=false
+            Code.seleccLaProdEnLaGram(0); //vuelve la gramatica pintando la 0. Program 
             Parser.MessageBoxCon3Preg();
             program.Nodes.Add("'{'");
             Parser.MessageBoxCon3Preg();
@@ -693,7 +693,7 @@ namespace at.jku.ssw.cc
                     MessageBoxCon3Preg();
                 }
                 
-                //Comienza Nodo Declaration.
+                //Comienza Nodo Declaration. ----- modificar desde aca
                 System.Windows.Forms.TreeNode posDeclars = new System.Windows.Forms.TreeNode("PosDeclars");
                 methodDecl.Nodes.Add(posDeclars);
                 MessageBoxCon3Preg();

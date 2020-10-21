@@ -1432,8 +1432,6 @@ namespace at.jku.ssw.cc //Compilador //text_Box_Mio
             tabControl1.SelectedIndex = 3;
 
             inicializa();
-            Parser.muestraProducciones = Parser.muestraCargaDeInstrs = false;
-            Tab.muestraTabSimb = true;
             compilar();
             // this.Close();
         }
