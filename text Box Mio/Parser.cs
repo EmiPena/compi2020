@@ -343,13 +343,12 @@ namespace at.jku.ssw.cc
                 MethodDecl(methodDeclsOpc);  //void Main() int x,i; {val = new Table;....}
             }
             Code.seleccLaProdEnLaGram(3); MessageBoxCon3Preg();
-            program.Nodes.Add(";"); MessageBoxCon3Preg();
             Check(Token.RBRACE);
             Code.Colorear("token");
             //////----------------------------------------------------------------Grupo 2 20/10/2015------------------------------------------------------
             MessageBoxCon3Preg();// program);
-            program.Nodes.Add("}"); MessageBoxCon3Preg();
-            Code.seleccLaProdEnLaGram(0);
+            program.Nodes.Add("}"); program.EnsureVisible(); MessageBoxCon3Preg();
+            Code.seleccLaProdEnLaGram(0); 
             //////----------------------------------------------------------------Grupo 2 20/10/2015------------------------------------------------------
             if (ZZ.parser)
             {
@@ -772,7 +771,7 @@ namespace at.jku.ssw.cc
                 Code.il.Emit(Code.RET);  //si lo saco se clava en el InvokeMember
                 Parser.nroDeInstrCorriente++;
                 Parser.cil[Parser.nroDeInstrCorriente].accionInstr = Parser.AccionInstr.ret;
-                Code.cargaInstr("ret"); MessageBoxCon3Preg();
+                Code.cargaInstr("ret"); 
             }
         }//Fin MethodDecl
 
@@ -911,6 +910,8 @@ namespace at.jku.ssw.cc
                             
                             //-------------------------------------------------Grupo 2 30/9/2015-----------------------------------------------------------
                             Expr(out itemDer, nexpr);
+
+                            Code.seleccLaProdEnLaGram(22); MessageBoxCon3Preg();
                             Code.Load(itemDer);
                             Code.Assign(itemIzq, itemDer, nexpr);
                             if (ZZ.parser)
@@ -1314,6 +1315,8 @@ namespace at.jku.ssw.cc
                         break;
                 }
             }
+
+            Code.seleccLaProdEnLaGram(18); MessageBoxCon3Preg();
         } // Fin Statement
 
         /// G3 PERUBLOCK Arreglado el arbol de StatementsOpc cuando esta vacio (".")
@@ -1376,12 +1379,19 @@ namespace at.jku.ssw.cc
                 ii++;
                 Code.seleccLaProdEnLaGram(17); MessageBoxCon3Preg();
             }//Fin while
-            MessageBoxCon3Preg();
+            System.Windows.Forms.TreeNode hijo2 = new System.Windows.Forms.TreeNode("StatementsOpc");
+            statementsopc.Nodes.Add(hijo2); hijo2.EnsureVisible(); MessageBoxCon3Preg();
+            System.Windows.Forms.TreeNode hijo3 = new System.Windows.Forms.TreeNode(".");
+            hijo2.Nodes.Add(hijo3); hijo3.ExpandAll(); hijo3.EnsureVisible(); MessageBoxCon3Preg();
             Check(Token.RBRACE);
-            Code.seleccLaProdEnLaGram(16); MessageBoxCon3Preg();
+            Code.seleccLaProdEnLaGram(16); MessageBoxCon3Preg(); Code.Colorear("laToken");
+            block.Nodes.Add("';'"); block.EnsureVisible();
+            MessageBoxCon3Preg();// block);
+            Code.Colorear("token");
             block.Nodes.Add("'}'"); block.EnsureVisible();
             MessageBoxCon3Preg();// block);
-            Code.Colorear("token"); 
+            Code.Colorear("token");
+            Code.seleccLaProdEnLaGram(8); MessageBoxCon3Preg();
         }//Fin Block
 
         static void ActPars()
@@ -1579,7 +1589,7 @@ namespace at.jku.ssw.cc
                 padre.Nodes.Add(OpcMinus); OpcMinus.EnsureVisible();
                 padre.ExpandAll();
                 MessageBoxCon3Preg();// padre);
-                Code.seleccLaProdEnLaGram(24);  MessageBoxCon3Preg();
+                Code.seleccLaProdEnLaGram(24);  MessageBoxCon3Preg();Code.Colorear("laToken");
                 System.Windows.Forms.TreeNode punt = new System.Windows.Forms.TreeNode(".");
                 OpcMinus.Nodes.Add(punt); punt.EnsureVisible();
                 OpcMinus.ExpandAll();// OpcMinus); 
@@ -1608,8 +1618,7 @@ namespace at.jku.ssw.cc
                 {
                     Scan();
                     op = Code.ADD;
-                    opString = "add       ";
-                    Code.Colorear("laToken"); 
+                    opString = "add       "; 
                     AddOp.Nodes.Add("'+'"); AddOp.EnsureVisible();
                     AddOp.ExpandAll();
                     MessageBoxCon3Preg();// AddOp);
@@ -1633,6 +1642,8 @@ namespace at.jku.ssw.cc
                 Code.seleccLaProdEnLaGram(26); MessageBoxCon3Preg();
                 Parser.Term(out itemSig, Term_OpcAddop);
                 Code.Load(itemSig);
+                Code.seleccLaProdEnLaGram(25); MessageBoxCon3Preg();
+                Code.seleccLaProdEnLaGram(23); MessageBoxCon3Preg();
                 if (item.type != Tab.intType || itemSig.type != Tab.intType)
                     Errors.Error("Los operandos deben ser de tipo int");
                 nroDeInstrCorriente++;
@@ -2011,9 +2022,9 @@ namespace at.jku.ssw.cc
                 {
                     OpcMulopFactors.Nodes.Add("."); OpcMulopFactors.EnsureVisible();
                     OpcMulopFactors.ExpandAll();
-                    MessageBoxCon3Preg();// OpcMulopFactors); 
-                    Code.seleccLaProdEnLaGram(26); 
+                    MessageBoxCon3Preg();// OpcMulopFactors);
                     Code.cargaProgDeLaGram("OpcMulopFactor = .");
+                    Code.seleccLaProdEnLaGram(26); MessageBoxCon3Preg();
                 }
             }
             else
@@ -2068,6 +2079,8 @@ namespace at.jku.ssw.cc
                             MessageBoxCon3Preg();// padre);
                             item = new Item(token.val);//Nuevo
                             Code.Load(item);
+                            Code.seleccLaProdEnLaGram(27); MessageBoxCon3Preg();
+                            Code.seleccLaProdEnLaGram(26); MessageBoxCon3Preg();
                             break;
                         }
                     case Token.CHARCONST:
