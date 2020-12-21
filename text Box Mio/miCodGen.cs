@@ -262,7 +262,9 @@ namespace at.jku.ssw.cc
                 actual = actual.Nodes[actual.Nodes.Count - 1].LastNode;
             }
             previo.Nodes.Add("( " + instrConNroLinea + " )");//previo quedo con el ultimo nodo expandido
-            //Grupo 2 FIN 301cargaInstr
+                                                             //Grupo 2 FIN 301cargaInstr
+
+            previo.Nodes[previo.Nodes.Count - 1].EnsureVisible(); //Corregido para q muestre las instrucciones 
             string texto = Program1.form1.richTextBox3.Text;
             Program1.form1.richTextBox3.SelectionStart = texto.Length;
             Program1.form1.richTextBox3.ScrollToCaret();
